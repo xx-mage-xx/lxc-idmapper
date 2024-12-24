@@ -141,7 +141,8 @@ if __name__ == "__main__":
             host_zero_to_first = range(default_range[0], default_range[cont_first.start])
             logging.debug(("first", name, cont_first, host_first))
             logging.debug(("first", name, cont_zero_to_first, host_zero_to_first))
-            mapping[cont_zero_to_first] = host_zero_to_first
+            if len(cont_zero_to_first):
+                mapping[cont_zero_to_first] = host_zero_to_first
         do_first_map()
 
         # since there are a lot of vars and i am bad at programming, i scope it so i don't make mistakes
@@ -152,7 +153,8 @@ if __name__ == "__main__":
             host_last_to_end = range(default_range[cont_last.stop], default_range[num_ids-1])
             logging.debug(("last", name, cont_last, host_last))
             logging.debug(("last", name, cont_last_to_end, host_last_to_end))
-            mapping[cont_last_to_end] = host_last_to_end
+            if len(cont_last_to_end):
+                mapping[cont_last_to_end] = host_last_to_end
         do_last_map()
 
         logging.debug(f"{name}s\n{ppf(sorted(mapping.items(), key=range_sorter))}")
